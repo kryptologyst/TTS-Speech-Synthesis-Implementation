@@ -1,0 +1,43 @@
+# Speech Synthesis Project Configuration
+
+# Model configuration
+model:
+  name: "tacotron2"  # Options: tacotron2, fastspeech2, hifigan
+  checkpoint_path: null
+  device: "auto"  # auto, cpu, cuda, mps
+  
+# Data configuration
+data:
+  sample_rate: 22050
+  hop_length: 256
+  win_length: 1024
+  n_mels: 80
+  max_wav_value: 32768.0
+  mel_fmin: 0
+  mel_fmax: 8000
+  
+# Training configuration
+training:
+  batch_size: 16
+  learning_rate: 1e-3
+  num_epochs: 1000
+  save_every_n_epochs: 50
+  validate_every_n_epochs: 10
+  
+# Evaluation configuration
+evaluation:
+  metrics: ["fad", "mcd", "stoi"]
+  test_samples: 100
+  
+# Sampling configuration
+sampling:
+  temperature: 1.0
+  max_length: 200
+  seed: 42
+  
+# Paths
+paths:
+  data_dir: "data"
+  checkpoint_dir: "assets/checkpoints"
+  sample_dir: "assets/samples"
+  log_dir: "logs"
